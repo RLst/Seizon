@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\Weapon.cs" />
      <None Include="Assets\Materials\deleteme.txt" />
      <None Include="Assets\Prefabs\deleteme.txt" />
+     <None Include="Assets\Imports\deleteme.txt" />
      <None Include="Assets\Scripts\deleteme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
