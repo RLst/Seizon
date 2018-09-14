@@ -40,8 +40,15 @@ public class PlayerMove : MonoBehaviour {
 		
 		if (Input.GetKey(KeyCode.E))
 		{
-			transform.Rotate (new Vector3(0, -1, 0));
+			transform.Rotate (new Vector3(0, 1, 0));
 		}
 	
+	}
+
+	void OnTriggerEnter(Collider other) {
+		if(other.gameObject.tag.Equals("Enemy"))
+		{
+			Destroy(other.gameObject);
+		}
 	}
 }
