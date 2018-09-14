@@ -51,19 +51,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\DayNightCycle.cs" />
-     <Compile Include="Assets\Scripts\FirstPersonController.cs" />
-     <Compile Include="Assets\Scripts\HeadBob.cs" />
-     <Compile Include="Assets\Scripts\MouseLook.cs" />
+     <Compile Include="Assets\Scripts\Environment\DayNightCycle.cs" />
+     <Compile Include="Assets\Scripts\FPSController\FirstPersonController.cs" />
+     <Compile Include="Assets\Scripts\FPSController\HeadBob.cs" />
+     <Compile Include="Assets\Scripts\FPSController\MouseLook.cs" />
      <Compile Include="Assets\Scripts\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerHurt.cs" />
+     <Compile Include="Assets\Scripts\RaycastShoot.cs" />
+     <Compile Include="Assets\Scripts\RayViewer.cs" />
      <Compile Include="Assets\Scripts\RigidbodyFirstPersonController.cs" />
      <Compile Include="Assets\Scripts\Weapon.cs" />
      <None Include="Assets\Materials\deleteme.txt" />
      <None Include="Assets\Prefabs\deleteme.txt" />
      <None Include="Assets\Imports\deleteme.txt" />
-     <None Include="Assets\Scripts\deleteme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
