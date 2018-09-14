@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 988cde9db5c37c846b9581663ae0ebbf
 timeCreated: 1536896400
 licenseType: Free
+=======
+guid: 6be77663ce4344041b6eba39f72006a1
+timeCreated: 1536808515
+licenseType: Pro
+>>>>>>> origin/PlayerControl
 TextScriptImporter:
   externalObjects: {}
   userData: 
