@@ -298,10 +298,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
-    <Compile Include="Assets\Scripts\UI\Setting.cs" />
+    <ProjectReference Include="HayamaKurose.Plugins.csproj">
+      <Project>{45110897-6A72-AEF0-D1C6-71748F475E69}</Project>
+      <Name>HayamaKurose.Plugins</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Environment\DayNightCycle.cs" />
+    <Compile Include="Assets\Scripts\FPSController\FirstPersonController.cs" />
+    <Compile Include="Assets\Scripts\FPSController\HeadBob.cs" />
+    <Compile Include="Assets\Scripts\FPSController\MouseLook.cs" />
+    <Compile Include="Assets\Scripts\PlayerAttack.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\PlayerHurt.cs" />
+    <Compile Include="Assets\Scripts\RaycastShoot.cs" />
+    <Compile Include="Assets\Scripts\RayViewer.cs" />
+    <Compile Include="Assets\Scripts\RigidbodyFirstPersonController.cs" />
+    <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\Setting.cs" />
+    <Compile Include="Assets\Scripts\Weapon.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Imports\deleteme.txt" />
     <None Include="Assets\Prefabs\deleteme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
