@@ -16,12 +16,16 @@ public class EnemySpawning : MonoBehaviour {
 	private float spawnTimer = 0f;
 
 // Wave Managing Variables
-	public int enemiesOnScreen = 0;
-	public int enemies = 0;
+	private int enemiesInRound = 20;
+	public int addEnemiesPerWave = 5;	
+	public int enemiesRemaining = 0;
+	private bool isEnemyInScene = false;
 
 	// Use this for initialization
 	void Start () {
 		spawnTimer = spawnInterval;
+
+		enemiesRemaining = enemiesInRound;
 	}
 	
 	// Update is called once per frame
@@ -29,17 +33,31 @@ public class EnemySpawning : MonoBehaviour {
 		waitTimer += Time.deltaTime;
 		spawnTimer += Time.deltaTime;
 
+		if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+		{
+			isEnemyInScene = false;
+		}
+		else
+		{
+			isEnemyInScene = true;
+		}
+
 		if (waitTimer >= waitInterval)
 		{
-			if (spawnTimer >= spawnInterval)
+			if (spawnTimer >= spawnInterval && enemiesRemaining >= 1)
 			{
 				GameObject NewEnemy = Instantiate(Enemy, SpawnManager.SpawnPositions[Random.Range (0, SpawnManager.SpawnPositions.Length)].transform.position, Quaternion.identity);
-				enemiesOnScreen += 1;
+				enemiesRemaining -= 1;
 
-				spawnTimer = 0;
-
-				Debug.Log(enemiesOnScreen);	
+				spawnTimer = 0;				
 			}	
+			else if (enemiesRemaining == 0 && isEnemyInScene == false)
+			{
+				enemiesInRound = enemiesInRound + addEnemiesPerWave;
+				enemiesRemaining = enemiesInRound;
+
+				waitTimer = 0;
+			}
 		}
 	}
 }
