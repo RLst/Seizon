@@ -49,7 +49,7 @@ namespace Seizon {
 			////Handle weapon execution (universal; regardless of firerate, firemode.. all handled)
 			if (Input.GetKey("Fire1"))
 			{
-				weapon.fire();
+				//weapon.fire();
 				
 				shootRay = new Ray(transform.position, transform.forward);
 				// var rayHit = 0;
@@ -64,7 +64,7 @@ namespace Seizon {
             }
 			else //if input.getkeyup(fire1)
 			{
-				weapon.release();
+				//weapon.release();
 			}
 
 
