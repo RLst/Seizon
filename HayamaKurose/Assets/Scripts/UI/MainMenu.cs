@@ -12,6 +12,12 @@ namespace Seizon
         public GameObject m_MainMenuPanel;
         public GameObject m_SettingPanel;
 
+        private void Start()
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
         //Load Scene "MainScene" when button is pressed
         public void PlayGameButtonOnClick()
         {
