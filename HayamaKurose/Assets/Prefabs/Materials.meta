@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 4754fc2df551be941a9b0033365f1b1d
 folderAsset: yes
 timeCreated: 1536906307
 licenseType: Free
+=======
+guid: d58d6421b9f2c4d46822dac945b47a69
+folderAsset: yes
+timeCreated: 1537501533
+licenseType: Pro
+>>>>>>> PlayerControl
 DefaultImporter:
   externalObjects: {}
   userData: 

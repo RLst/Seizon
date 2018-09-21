@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 02835d46807be02498183c29b9ed0095
 timeCreated: 1536906307
 licenseType: Free
+=======
+guid: 55ad17774a16d254bba1aaa084a223d0
+timeCreated: 1537501533
+licenseType: Pro
+>>>>>>> PlayerControl
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
