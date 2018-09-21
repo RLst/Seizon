@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+namespace Seizon {
 public class WeaponController : MonoBehaviour
 {
 
@@ -60,7 +61,11 @@ public class WeaponController : MonoBehaviour
 
     void Attack()
     {
+        //Muzzle flash
         muzzleFlash.Play();
+
+        //Reduce ammo count
+        weapon.ammo--;
 
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, weapon.range))
@@ -71,10 +76,10 @@ public class WeaponController : MonoBehaviour
             //If valid shootable target is found
             if (target != null)
             {
-                // debugRay.SetPosition(1, hit.point);
-
                 //Deal damage to it
                 target.TakeDamage(weapon.damage);
+
+                // debugRay.SetPosition(1, hit.point);
             }
             else
             {
@@ -93,5 +98,7 @@ public class WeaponController : MonoBehaviour
 
 
     }
+
+}
 
 }

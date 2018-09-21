@@ -442,6 +442,61 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
       value: 2.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198068911846146550, guid: 4ac77ee21c472a940a3a6b463b2175a5,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 2.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198068911846146550, guid: 4ac77ee21c472a940a3a6b463b2175a5,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 2.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198068911846146550, guid: 4ac77ee21c472a940a3a6b463b2175a5,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 2.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198068911846146550, guid: 4ac77ee21c472a940a3a6b463b2175a5,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 2.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198068911846146550, guid: 4ac77ee21c472a940a3a6b463b2175a5,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 2.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198068911846146550, guid: 4ac77ee21c472a940a3a6b463b2175a5,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 2.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198068911846146550, guid: 4ac77ee21c472a940a3a6b463b2175a5,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 2.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198068911846146550, guid: 4ac77ee21c472a940a3a6b463b2175a5,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 2.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198068911846146550, guid: 4ac77ee21c472a940a3a6b463b2175a5,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 2.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198068911846146550, guid: 4ac77ee21c472a940a3a6b463b2175a5,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 2.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198068911846146550, guid: 4ac77ee21c472a940a3a6b463b2175a5,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 2.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ac77ee21c472a940a3a6b463b2175a5, type: 2}
   m_IsPrefabParent: 0
@@ -705,11 +760,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 851594419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a764b0a04ae34ebb9227ea6da49c277, type: 3}
+  m_Script: {fileID: 11500000, guid: 3eb28d69d679fec46ab9782610f59ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 2017787889}
-  weapon: {fileID: 1777036268}
+  weapon: {fileID: 1777036269}
   muzzleFlash: {fileID: 275710014}
   gunEnd: {fileID: 1647878473}
 --- !u!1001 &924270598
@@ -759,7 +814,8 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114891617654947236, guid: 50d91922f95e2204bafaf102d8527017, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 50d91922f95e2204bafaf102d8527017, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1005148474
@@ -4541,7 +4597,7 @@ MeshFilter:
 GameObject:
   m_PrefabParentObject: {fileID: 100002, guid: ccac3f45f8b36dc4196bc991b941ea8e, type: 3}
   m_PrefabInternal: {fileID: 1900684132}
---- !u!114 &1777036268
+--- !u!114 &1777036269
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -4549,14 +4605,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1777036267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99d01870d4e185f48a973fede7fbd1fb, type: 3}
+  m_Script: {fileID: 11500000, guid: d4fe699a2c1b59140a622aeb2359f665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 40
+  range: 50
   damage: 20
-  fireRate: 15
-  fireMode: 2
+  fireRate: 10
+  fireMode: 1
   type: 2
+  ammo: 6
+  magazineSize: 12
 --- !u!4 &1777036270 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: ccac3f45f8b36dc4196bc991b941ea8e, type: 3}
@@ -4655,6 +4713,29 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!1 &1865847142 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1108169247275364, guid: 50d91922f95e2204bafaf102d8527017,
+    type: 2}
+  m_PrefabInternal: {fileID: 924270598}
+--- !u!114 &1865847143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1865847142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4fe699a2c1b59140a622aeb2359f665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 1
+  damage: 30
+  fireRate: 1
+  fireMode: 1
+  type: 0
+  ammo: 10
+  magazineSize: 12
 --- !u!1 &1868673443
 GameObject:
   m_ObjectHideFlags: 0

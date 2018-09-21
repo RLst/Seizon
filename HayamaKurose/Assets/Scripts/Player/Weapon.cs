@@ -30,18 +30,7 @@ public class Weapon : MonoBehaviour
     public WeaponType type;
 
     //Core
-    private int ammo = 0;
-
-
-    ////Internal stuff
-    //bool isFiring = false;
-
-    //public void fire() {
-    //	isFiring = true;
-    //}
-
-    //public void release() {
-    //	isFiring = false;
-    //}
+    public int ammo = 10;   //-1 means unlimited
+    public int magazineSize = 12;
 
 }
