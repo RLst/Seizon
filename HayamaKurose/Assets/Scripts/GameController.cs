@@ -9,10 +9,13 @@ namespace Seizon
         public GameObject m_pMenu;
         public GameObject m_tpMenu;
         public GameObject m_sMenu;
+        public float m_fGameTime;
+        public float m_fRoundTime;
         // Use this for initialization
         void Start()
         {
-
+            m_fGameTime = 0;
+            m_fRoundTime = 0;
         }
 
         // Update is called once per frame
@@ -37,6 +40,8 @@ namespace Seizon
                     m_sMenu.SetActive(false);
                 }
             }
+                m_fGameTime += Time.deltaTime;
+                m_fRoundTime += Time.deltaTime;
         }
     }
 }
