@@ -14,10 +14,16 @@ namespace Seizon {
 
 
 	public class PlayerAttack : MonoBehaviour {
+
+        //damage = weapon.damage
+        //range = weapon.range
+        //fireRate = weapon.fireRate
+        //impactForce = weapon.impactForce
+
 		private GameObject player;	//SINGULAR
 		public GameObject[] enemies;
 
-		private Weapon weapon;
+		public Weapon weapon;
 
 		private Ray shootRay;
 
@@ -26,6 +32,8 @@ namespace Seizon {
 		//Internal
 		private float fireStartTime;
 		private float fireDuration;
+
+
 
 		// Use this for initialization
 		void Start () {
