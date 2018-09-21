@@ -8,7 +8,7 @@ public class SpawnManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		SpawnPositions = GameObject.FindGameObjectsWithTag("Spawner");
 	}
 	
 	// Update is called once per frame
