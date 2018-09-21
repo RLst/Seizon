@@ -308,6 +308,7 @@
     <Compile Include="Assets\Scripts\FPSController\FirstPersonController.cs" />
     <Compile Include="Assets\Scripts\FPSController\HeadBob.cs" />
     <Compile Include="Assets\Scripts\FPSController\MouseLook.cs" />
+    <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerHurt.cs" />
@@ -315,6 +316,7 @@
     <Compile Include="Assets\Scripts\RayViewer.cs" />
     <Compile Include="Assets\Scripts\RigidbodyFirstPersonController.cs" />
     <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\UI\Setting.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
   </ItemGroup>
