@@ -321,6 +321,7 @@
     <Compile Include="Assets\Scripts\RigidbodyFirstPersonController.cs" />
     <Compile Include="Assets\Scripts\Target.cs" />
     <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\Overlay.cs" />
     <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\UI\Setting.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
