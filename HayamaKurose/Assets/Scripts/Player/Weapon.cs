@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+namespace Seizon {
 
 public enum WeaponType
 {
@@ -32,5 +33,7 @@ public class Weapon : MonoBehaviour
     //Core
     public int ammo = 10;   //-1 means unlimited
     public int magazineSize = 12;
+
+}
 
 }

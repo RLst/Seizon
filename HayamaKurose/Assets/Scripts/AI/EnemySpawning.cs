@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Seizon {
+
+
 public class EnemySpawning : MonoBehaviour {
 
 	public SpawnManager SpawnManager;
@@ -12,7 +15,7 @@ public class EnemySpawning : MonoBehaviour {
 	private float waitTimer = 0f;
 
 // Spawn Timer -> Wait between enemies spawning
-	public float spawnInterval = 2f;
+	public float spawnInterval = 2f;	//Seconds
 	private float spawnTimer = 0f;
 
 // Wave Managing Variables
@@ -60,4 +63,6 @@ public class EnemySpawning : MonoBehaviour {
 			}
 		}
 	}
+}
+
 }

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour {
+namespace Seizon {
+
+public class PlayerMove : MonoBehaviour {	//TEST ONLY; use FPS Controller
 
 	public float moveMultiplier = 0.2f;
 
@@ -51,4 +53,6 @@ public class PlayerMove : MonoBehaviour {
 			Destroy(other.gameObject);
 		}
 	}
+}
+
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Seizon {
+
 public class SpawnManager : MonoBehaviour {
 
 	public GameObject[] SpawnPositions;
@@ -15,4 +17,6 @@ public class SpawnManager : MonoBehaviour {
 	void Update () {
 		
 	}
+}
+
 }

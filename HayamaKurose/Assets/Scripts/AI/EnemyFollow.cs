@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+namespace Seizon {
+
 public class EnemyFollow : MonoBehaviour {
 
 	public NavMeshAgent nma;
-	public GameObject player;
+	public GameObject player;	//AI behaviour target
 	
 	//public float maxSpeed;
 	//public float acceleration;
@@ -23,4 +25,6 @@ public class EnemyFollow : MonoBehaviour {
 	//	nma.speed = maxSpeed;
 		nma.destination = player.transform.position;
 	}
+}
+
 }

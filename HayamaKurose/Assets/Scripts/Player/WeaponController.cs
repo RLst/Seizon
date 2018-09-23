@@ -3,28 +3,37 @@
 namespace Seizon {
 public class WeaponController : MonoBehaviour
 {
+    //Put this on FPS controller
 
-    public Camera fpsCam;
-    public Weapon weapon;       //Also current weapon
-
-    private float timeToNextAttack = 0;
-    private bool onFireHold = false;
-
+    private Camera FPScam;
+    private Weapon weapon;       //Also current weapon
+    
     //Particles
     public ParticleSystem muzzleFlash;
-    // public GameObject impactEffect;
+    public GameObject impactEffect;
 
+    //Fire mode related
+    private float nextAttackTime = 0;
+    private bool onFireHold = false;
 
     //DEBUGS
-    public GameObject gunEnd;
+    public GameObject debugTarget;        //Where the gun shot at
     // private LineRenderer debugRay;
+
+
+    void Start()
+    {
+        //Set all core objects
+        weapon = GetComponentInChildren<Weapon>();
+        FPScam = GetComponentInChildren<Camera>();
+        muzzleFlash = GetComponentInChildren<ParticleSystem>();
+    }
 
     void Update()
     {
-
-        //if (Input.GetButton("Fire1") && Time.time >= timeToNextAttack)
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1"))   //Generally Left Mouse Click or Left Control
         {
+            //Handle various fire modes
             switch (weapon.fireMode)
             {
                 case FireMode.SINGLE:
@@ -37,6 +46,7 @@ public class WeaponController : MonoBehaviour
                     break;
 
                 case FireMode.SEMI_AUTOMATIC:
+                    //Fire ONE shot per button press and release
                     if (!onFireHold)
                     {
                         onFireHold = true;
@@ -45,9 +55,10 @@ public class WeaponController : MonoBehaviour
                     break;
 
                 case FireMode.AUTOMATIC:
-                    if (Time.time >= timeToNextAttack)
+                    //Hold down button for multiple shots
+                    if (Time.time >= nextAttackTime)
                     {
-                        timeToNextAttack = Time.time + 1f / weapon.fireRate;
+                        nextAttackTime = Time.time + 1f / weapon.fireRate;
                         Attack();
                     }
                     break;
@@ -68,16 +79,18 @@ public class WeaponController : MonoBehaviour
         weapon.ammo--;
 
         RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, weapon.range))
+        if (Physics.Raycast(FPScam.transform.position, FPScam.transform.forward, out hit, weapon.range))
         {
             Debug.Log(hit.transform.name);
 
-            Target target = hit.transform.GetComponent<Target>();
+            Shootable target = hit.transform.GetComponent<Shootable>();
             //If valid shootable target is found
             if (target != null)
             {
                 //Deal damage to it
                 target.TakeDamage(weapon.damage);
+
+                
 
                 // debugRay.SetPosition(1, hit.point);
             }
@@ -87,13 +100,14 @@ public class WeaponController : MonoBehaviour
                 // debugRay.SetPosition(1, fpsCam.transform.forward * 100f);
             }
 
-            //Position bullet impact point
-            gunEnd.transform.position = hit.point;
-
             //Control impact particle effect
-            // Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            // Destroy(impactEffect, 1.5f);
+            var GO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(GO, 1.5f);
 
+            //DEBUG Position target
+            if (debugTarget != null) {
+                debugTarget.transform.position = hit.point;
+            }
         }
 
 

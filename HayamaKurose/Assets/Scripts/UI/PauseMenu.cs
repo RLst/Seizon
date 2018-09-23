@@ -9,9 +9,9 @@ namespace Seizon
     public class PauseMenu : MonoBehaviour
     {
 
-        public GameObject m_FPSCon;
-        public GameObject m_pMenu;
-        public GameObject m_sPanel;
+        public GameObject m_FPSController;
+        public GameObject m_pauseMenu;
+        public GameObject m_settingsPanel;
 
         // Use this for initialization
         void Start()
@@ -25,7 +25,7 @@ namespace Seizon
 
         private void OnEnable()
         {
-            m_FPSCon.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
+            m_FPSController.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
             Time.timeScale = 0;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -33,7 +33,7 @@ namespace Seizon
 
         private void OnDisable()
         {
-            m_FPSCon.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
+            m_FPSController.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
             Time.timeScale = 1;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -46,8 +46,8 @@ namespace Seizon
 
         public void OnSettingsButtonDown()
         {
-            m_sPanel.SetActive(true);
-            m_pMenu.SetActive(false);
+            m_settingsPanel.SetActive(true);
+            m_pauseMenu.SetActive(false);
         }
 
         public void OnMainMenuButtonDown()

@@ -19,7 +19,7 @@ namespace Seizon
         // Use this for initialization
         void Start()
         {
-            m_Timer.text = m_GC.m_fRoundTime.ToString() + " / " + m_GC.m_fGameTime.ToString(); 
+            // m_Timer.text = m_GC.m_fRoundTime.ToString() + " / " + m_GC.m_fGameTime.ToString(); 
         }
 
         // Update is called once per frame

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+namespace Seizon {
+
 public class DayNightCycle : MonoBehaviour {
 	//Simple day night cycle
 
@@ -55,5 +58,6 @@ public class DayNightCycle : MonoBehaviour {
 
 	}
 
+}
 
 }
