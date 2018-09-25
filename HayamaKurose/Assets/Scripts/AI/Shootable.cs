@@ -25,7 +25,7 @@ public class Shootable : MonoBehaviour {
 	void Die()
     {
 		//play death animation
-		Destroy(this, deathDelayTime);
+		Destroy(gameObject, deathDelayTime);
 		//Update kill count
 		GC.killCount++;
 	}

@@ -16,14 +16,9 @@ namespace Seizon
 
 
         ////HUD Parameters
-        public double gameTime;
-        public int dayCount;
-        // public static float HP;     //This should be in Player.cs
-        //Number of kills the player has made
-        public int killCount;
-        //Ammo carried by the player for each type of weapon
-        // public Dictionary<WeaponType, int> CarriedAmmo { get; set; }  
-
+        public double gameTime = 0;
+        public int dayCount = 0;
+        public int killCount = 0;
 
         ////Spawn Parameters
         public int spawnsPerDay = 20;               //Initial settings
@@ -53,16 +48,6 @@ namespace Seizon
             // {
             //     //Throw assert
             // }
-
-            gameTime = 0;
-            dayCount = 0;
-
-            // //Set Carried Ammo defaults
-            // CarriedAmmo.Add(WeaponType.KNIFE, -1);          //Knife has unlimited "ammo"
-            // CarriedAmmo.Add(WeaponType.KATANA, -1);         //Katana has unlimited "ammo"
-            // CarriedAmmo.Add(WeaponType.HAND_GUN, 36);       //3 clips of handgun ammo to start off with
-            // CarriedAmmo.Add(WeaponType.ASSAULT_RIFLE, 0);
-            // CarriedAmmo.Add(WeaponType.ROCKET_LAUNCHER, 0);
         }
 
         // Update is called once per frame

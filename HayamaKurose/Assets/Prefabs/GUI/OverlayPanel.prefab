@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 222305487662165884}
   - component: {fileID: 114457841964943154}
   m_Layer: 5
-  m_Name: CarriedAmmo
+  m_Name: AmmoCarried
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -370,13 +370,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GC: {fileID: 0}
-  FPSController: {fileID: 0}
   gameTime: {fileID: 114046843273304080}
   dayCount: {fileID: 114626171830647780}
   HP: {fileID: 114323095839488044}
   killCount: {fileID: 114323707756350544}
   remainingAmmo: {fileID: 114617153671251418}
-  carriedAmmo: {fileID: 114457841964943154}
+  ammoCarried: {fileID: 114457841964943154}
 --- !u!114 &114323095839488044
 MonoBehaviour:
   m_ObjectHideFlags: 1

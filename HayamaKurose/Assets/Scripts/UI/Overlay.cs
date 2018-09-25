@@ -25,17 +25,14 @@ public class Overlay : MonoBehaviour
 
     void Update()
     {
-        ////Update the HUD
-        // gameTime.text = GameController.gameTimeSecs.ToString();
-        
         //Format the game time
         var timeUnformatted = TimeSpan.FromSeconds(GC.gameTime);
         var timeFormatted = string.Format(
-            "{0:D2}h:{1:D2}m:{2:D2}s:{3:D3}ms",
-            timeUnformatted.Hours,
+            "{0:D2}:{1:D2}:{2:D3}",
             timeUnformatted.Minutes,
             timeUnformatted.Seconds,
             timeUnformatted.Milliseconds);
+        gameTime.text = timeFormatted;
 
         dayCount.text = GC.dayCount.ToString();
 
@@ -45,12 +42,8 @@ public class Overlay : MonoBehaviour
 
         remainingAmmo.text = player.currentWeapon.remainingAmmo.ToString();
 
+        ammoCarried.text = player.ammoCarried[player.currentWeapon.type].ToString();
 
-        Debug.Log(player);
-        Debug.Log(player.currentWeapon);
-        Debug.Log(player.ammoCarried);
-        var test = player.ammoCarried[player.currentWeapon.type];
-        carriedAmmo.text = player.ammoCarried[player.currentWeapon.type].ToString();
     }
 }
 

@@ -95,10 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd19211727bc44c89b857c34fb802338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GC: {fileID: 0}
   SpawnDelayMin: 0
   SpawnDelayMax: 5
-  spawnSubject: {fileID: 0}
+  spawnSubject: {fileID: 1598377115793650, guid: 733617851879fe14a8bc9e1c3cbb5ad3,
+    type: 2}
 --- !u!136 &136599370641256326
 CapsuleCollider:
   m_ObjectHideFlags: 1

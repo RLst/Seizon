@@ -8,16 +8,18 @@ public class Player : MonoBehaviour
     ///Attach this script to the root FPS controller
 
     ////Core
-    private GameController GC;
     public Weapon currentWeapon;
-    private Camera FPScam;
-    public int health;
+    public int health = 100;
+    private GameController GC;
+    private Camera fpsCam;
     // private PlayerDEFUNCT player;
     
     ////Weapons and Ammo
+
     //List of weapons the player is carrying
     [HideInInspector]
-    public List<Weapon> weaponsCarried;
+    public List<Weapon> weaponsCarried = new List<Weapon>();
+
     //List of ammo for each weapon carried
     [HideInInspector]
     public Dictionary<WeaponType, int> ammoCarried;
@@ -28,9 +30,8 @@ public class Player : MonoBehaviour
     private bool isReloading;
     
     ////Particles
-    private ParticleSystem muzzleFlash;
     public GameObject impactEffect;
-
+    private ParticleSystem muzzleFlash;
 
     ///DEBUGS
     public GameObject debugTarget;        //Where the gun shot at
@@ -43,18 +44,21 @@ public class Player : MonoBehaviour
         GC = GameObject.FindObjectOfType<GameController>();
 
         //Set all core objects
-        currentWeapon = GetComponentInChildren<Weapon>();
-        FPScam = GetComponentInChildren<Camera>();
+        fpsCam = GetComponentInChildren<Camera>();
         muzzleFlash = GetComponentInChildren<ParticleSystem>();
-        // player = GetComponent<PlayerDEFUNCT>();
 
-        //Set Carried Ammo defaults
+        ///Setup the player's weapons
+        weaponsCarried = new List<Weapon>();
+        weaponsCarried.Add(GetComponentInChildren<Weapon>());   //Adds a handgun
+        currentWeapon = weaponsCarried[weaponsCarried.Count-1];
+
+        ///Set each ammo for each weapon carried by the player
+        ammoCarried = new Dictionary<WeaponType, int>();
 		ammoCarried.Add(WeaponType.KNIFE, -1);          //Knife has unlimited "ammo"
 		ammoCarried.Add(WeaponType.KATANA, -1);         //Katana has unlimited "ammo"
 		ammoCarried.Add(WeaponType.HAND_GUN, 36);       //3 clips of handgun ammo to start off with
 		ammoCarried.Add(WeaponType.ASSAULT_RIFLE, 0);
 		ammoCarried.Add(WeaponType.ROCKET_LAUNCHER, 0);
-
     }
 
     void Update()
@@ -100,7 +104,8 @@ public class Player : MonoBehaviour
 
 
         ////Reload
-        if (Input.GetButtonDown("Reload"))
+        // if (Input.GetButtonDown("Reload"))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             //If there's any bullets left on the player
             if (ammoCarried[currentWeapon.type] > 0) {
@@ -132,7 +137,7 @@ public class Player : MonoBehaviour
             currentWeapon.remainingAmmo--;
 
             RaycastHit hit;
-            if (Physics.Raycast(FPScam.transform.position, FPScam.transform.forward, out hit, currentWeapon.range))
+            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, currentWeapon.range))
             {
                 // Debug.Log(hit.transform.name);
                 Shootable target = hit.transform.GetComponent<Shootable>();
@@ -167,6 +172,7 @@ public class Player : MonoBehaviour
 
     void Reload()
     {
+        // Debug.Log("Reloading...");
         ///Is the weapon reloadable? ie. not a melee weapon
         if (currentWeapon.type != WeaponType.KNIFE || 
             currentWeapon.type != WeaponType.KATANA) {

@@ -59,4 +59,5 @@ MonoBehaviour:
   killCount: 0
   spawnsPerDay: 20
   additionalSpawnsPerDay: 10
-  sunNmoon: {fileID: 0}
+  remainingSpawnsToday: 20
+  sun: {fileID: 0}
