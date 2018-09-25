@@ -60,7 +60,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4294828547380384
 Transform:
   m_ObjectHideFlags: 1
@@ -200,5 +200,5 @@ MonoBehaviour:
   fireRate: 10
   fireMode: 2
   type: 0
-  ammo: -1
+  remainingAmmo: -1
   magazineSize: -1

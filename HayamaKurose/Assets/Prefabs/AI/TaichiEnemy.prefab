@@ -1123,7 +1123,7 @@ GameObject:
   - component: {fileID: 114936384745661772}
   m_Layer: 0
   m_Name: TaichiEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3847,8 +3847,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b79b6df5093c8547ae546140e1e68ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GC: {fileID: 114510233447878076, guid: 7b42fc062c29d4dbc84feadd4542836f, type: 2}
   health: 100
-  deathDelay: 0
+  deathDelayTime: 0
 --- !u!136 &136420375184103896
 CapsuleCollider:
   m_ObjectHideFlags: 1

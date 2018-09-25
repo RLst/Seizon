@@ -7,7 +7,7 @@ namespace Seizon {
 
 public enum WeaponType
 {
-    KNIFE,
+    KNIFE = 0,
     KATANA,
     HAND_GUN,
     ASSAULT_RIFLE,
@@ -31,8 +31,15 @@ public class Weapon : MonoBehaviour
     public WeaponType type;
 
     //Core
-    public int ammo = 10;   //-1 means unlimited
+    public int remainingAmmo = 12;   //-1 means unlimited
     public int magazineSize = 12;
+
+
+    // public Weapon PreviousWeapon(Weapon currentWeapon) {
+    //     if (currentWeapon <= 0) {
+    //         return currentWeapon.weasdfasdf
+    //     }
+    // }
 
 }
 
