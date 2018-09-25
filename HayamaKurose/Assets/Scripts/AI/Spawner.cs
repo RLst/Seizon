@@ -7,16 +7,22 @@ namespace Seizon
 
 	// public GameObject[] spawners;
 	// public int RandomChance = 100;
-	public GameController GC;
-	public float SpawnDelayMin = 0;		//In seconds
+	private GameController GC;
+	public float SpawnDelayMin = 1;		//In seconds
 	public float SpawnDelayMax = 5;
 	private float nextSpawnTime = 100000000;	//Set to infinity
 
 	//The object the spawner spawns
 	public GameObject spawnSubject;		
 
+	void Awake()
+	{
+		// spawnSubject = GameObject.FindGameObjectWithTag("Enemy")
+	}
+
 	void Start()
 	{
+		GC = GameObject.FindObjectOfType<GameController>();
 		GetNextSpawnTime();
 	}
 
@@ -24,12 +30,13 @@ namespace Seizon
 	void Update() 
 	{
 		///If there are enemies left to spawn
-		if (GC.spawnsPerDay > 0) 
+		if (GC.remainingSpawnsToday > 0) 
 		// if (gameController.RemainingSpawnsToday > 0)
 		{
 			//Spawn one if the next spawn time reached
 			if (Time.time >= nextSpawnTime) {
 				Spawn();
+				GetNextSpawnTime();
 			}
 		}
 		else ///No more enemies left so end the day (speed up the day)
@@ -41,8 +48,7 @@ namespace Seizon
 	void Spawn()
 	{
 		Instantiate(spawnSubject, transform.position, Quaternion.identity);		//Spawns an subject
-		GC.spawnsPerDay--;		//Decrement count
-		GetNextSpawnTime();		//Sets the next spawn time
+		GC.remainingSpawnsToday--;		//Decrement count
 	}
 
 	float GetNextSpawnTime() {

@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     ///Attach this script to the root FPS controller
 
     ////Core
-    public GameController GC;
+    private GameController GC;
     public Weapon currentWeapon;
     private Camera FPScam;
     public int health;
@@ -39,6 +39,9 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        //Find the one and only gamecontroller
+        GC = GameObject.FindObjectOfType<GameController>();
+
         //Set all core objects
         currentWeapon = GetComponentInChildren<Weapon>();
         FPScam = GetComponentInChildren<Camera>();

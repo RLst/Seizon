@@ -9,18 +9,18 @@ namespace Seizon
 public class Overlay : MonoBehaviour
 {
     public GameController GC;
-    public GameObject FPSController;
+    // public GameObject FPSController;
     private Player player;
     public Text gameTime;
     public Text dayCount;
     public Text HP;
     public Text killCount;
     public Text remainingAmmo;      //Remaining ammo for current weapon
-    public Text carriedAmmo;
+    public Text ammoCarried;
 
     void Start()
     {
-        player = FPSController.GetComponentInChildren<Player>();
+        player = GameObject.FindObjectOfType<Player>();
     }
 
     void Update()
@@ -45,9 +45,13 @@ public class Overlay : MonoBehaviour
 
         remainingAmmo.text = player.currentWeapon.remainingAmmo.ToString();
 
-        carriedAmmo.text = player.ammoCarried[player.currentWeapon.type].ToString();
 
-        Debug.Log("remaining ammo = " + player.currentWeapon.remainingAmmo.ToString());
+        Debug.Log(player);
+        Debug.Log(player.currentWeapon);
+        Debug.Log(player.ammoCarried);
+        var test = player.ammoCarried[player.currentWeapon.type];
+        carriedAmmo.text = player.ammoCarried[player.currentWeapon.type].ToString();
     }
 }
+
 }

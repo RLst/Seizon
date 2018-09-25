@@ -3,13 +3,14 @@
 namespace Seizon {
 public class Shootable : MonoBehaviour {
 
-	public GameController GC;
+	private GameController GC;
 	public float health = 100f;
 	public float deathDelayTime = 0;		//Seconds
 
 	void Start()
 	{
-		GC = GetComponent<GameController>();
+		//Find the one and only game controller
+		GC = GameObject.FindObjectOfType<GameController>();
 	}
 
 	public void TakeDamage(float damageReceived)
@@ -24,7 +25,7 @@ public class Shootable : MonoBehaviour {
 	void Die()
     {
 		//play death animation
-		Destroy(gameObject, deathDelayTime);
+		Destroy(this, deathDelayTime);
 		//Update kill count
 		GC.killCount++;
 	}

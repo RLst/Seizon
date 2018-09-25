@@ -28,12 +28,32 @@ namespace Seizon
         ////Spawn Parameters
         public int spawnsPerDay = 20;               //Initial settings
         public int additionalSpawnsPerDay = 10;     //Initial settings
-        private int remainingSpawnsToday = 20;       //Working
-        public DayNightCycle sunNmoon;
+        [HideInInspector]
+        public int remainingSpawnsToday = 20;       //Working
+        public DayNightCycle sun;
+
+        //Singleton pattern
+        static GameController instance = null;
 
 
         void Start()
         {
+            //Setup singleton gamecontroller
+            if(instance != null)
+            {
+                //error
+            }
+            else
+            {
+                instance = this;
+            }
+
+            // GameController controller = GameObject.FindObjectOfType<GameController>();
+            // if(controller.gameObject != gameObject)
+            // {
+            //     //Throw assert
+            // }
+
             gameTime = 0;
             dayCount = 0;
 
@@ -74,10 +94,15 @@ namespace Seizon
             gameTime += Time.deltaTime;    
 
             
-            ///Check all enemies killed
-            if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 0) {
-                sunNmoon.FastForward();
+            ///Check if all enemies have been killed
+            if (remainingSpawnsToday <= 0) {
+                StartNewDay();
             }
+
+            // ///If it is not day 0 and all enemies are killed then fast forward to the next day
+            // if (dayCount != 0 && GameObject.FindGameObjectsWithTag("Enemy").Length <= 0) {
+            //     sun.FastForward();
+            // }
                 
         }
 
@@ -85,7 +110,7 @@ namespace Seizon
         public void StartNewDay()
         {
             //Next day!!! Let the user know (GUI panel)
-            dayCount++;
+            // dayCount++;
             ShowNextDayGUIPanel();
 
             //Add on new number of spawns for the next day
@@ -94,7 +119,7 @@ namespace Seizon
 
             //If all spawn subjects are dead then speed the day up until morning
             if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 0) {
-                sunNmoon.FastForward();
+                sun.FastForward();
             }
         }
 
@@ -106,3 +131,17 @@ namespace Seizon
 
     }
 }
+
+
+////Game sequences
+/*
+1. Day Zero, No enemies yet, Player in the center somewhere
+2. Spawners start spawning, decrementing GC.remainingSpawnsToday
+3. If player kills all enemies ie. GC.remainingSpawnsToday = 0, start new day:
+    - Increment GC.daycount
+    - ShowNextDayGUIPanel()
+    - Update remainingSpawnsToday
+    - 
+
+
+ */

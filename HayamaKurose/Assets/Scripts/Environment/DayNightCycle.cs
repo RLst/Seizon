@@ -13,73 +13,113 @@ public class DayNightCycle : MonoBehaviour {
 
 	public float daySpeed = 0.03f;			//In degrees per frame; Good values =  0.2-0.3
 	public float nightSpeed = 0.06f;		//Nights are shorter than the days; Good values = daySpeed *2
-	private bool previousFrameWasDay;				//Required to check for new day transition
+	private bool isDayTime;
+	private bool wasDayTime;				//Required to check for new day transition
 	private bool onFastForward = false;
+	
 	public float fastForwardMultiplier = 20f;
+	private float workingDaySpeed; private float workingNightSpeed;
 
 	void Start()
 	{
+		//Saves the current speeds for reversion later
+		workingDaySpeed = daySpeed;
+		workingNightSpeed = nightSpeed;
+
 		//Set sun to an early morning position
 		transform.SetPositionAndRotation(new Vector3(0,0,0), new Quaternion(5f, 50f, 0, 0));
 	}
-	void FixedUpdate () {
+	void FixedUpdate () 
+	{
+		CheckIfSunIsOut(out isDayTime);
 
 		//Control day and night
-		if (isDayTime()) {
-			//Day time is slower than night time
-			transform.Rotate(daySpeed, 0, 0);
+		if (isDayTime) {
+                //Day time is slower than night time
+                transform.Rotate(workingDaySpeed, 0, 0);
 			// Debug.Log("Daytime!");
 		}
 		else {
-			transform.Rotate(nightSpeed, 0, 0);
+                transform.Rotate(workingNightSpeed, 0, 0);
 			// Debug.Log("Nighttime!");
 		}
 
+		if (SunriseHasOccured())
+		{
+			GC.dayCount++;
+		}
 		//If there's a transition between day and night ie. nightfall
 		//Then let game controller know so it can start a new wave (day) of enemies
-		if (previousFrameWasDay && !isDayTime())	//If previous frame was daytime and current frame is night time...
-		{
-			GC.StartNewDay();
-		}
 
-		//Handle fast forwards cessations
-		if (onFastForward) {
-			//If there's a transition between night and day ie. a new day has begun
-			//then return to normal speed
-			if (!previousFrameWasDay && isDayTime()) 
-			{
-				ReturnToNormalSpeed();
-			}
-			previousFrameWasDay = isDayTime();
-		}
+
+		// if (wasDayTime && !this.isDayTime())	//If previous frame was daytime and current frame is night time...
+		// {
+        //         GC.StartNewDay();
+		// }
+
+		HandleFastForward();
+        wasDayTime = isDayTime;	//Required for the day to night transition methods
 	}
 
-	public bool isDayTime() {	//Returns true if day, false if night
+
+	///Day cycle methods
+	public void CheckIfSunIsOut(out bool isDayTime)
+	{
 		//THIS IS REALLY CRAP AND INEFFICIENT AND NEEDS MORE WORK
 		float xa = transform.eulerAngles.x;
 		// Debug.Log(xa);
 		if (xa / 180 > 0.0f && xa / 180 < 1.0f ||		//DUMB
 			xa / 180 > 2.0f && xa / 180 < 3.0f ||
 			xa / 180 > -2.0f && xa / 180 < -1.0f)
+			isDayTime = true;
+		else 
+			isDayTime = false;
+	}
+	private bool NightfallHasOccured()
+	{
+		if (wasDayTime && !isDayTime)
 			return true;
 		else 
 			return false;
-
 	}
+	private bool SunriseHasOccured()
+	{
+		if (!wasDayTime && isDayTime)
+			return true;
+		else
+			return false;
+	}
+
 
 	public void FastForward()
 	{
+		//Fast forwards to the morning?
+
+
 		//Just fast forward by multiplying whatever speed by a certain constant amount that feels OK
 		onFastForward = true;
-		daySpeed *= fastForwardMultiplier;
-		nightSpeed *= fastForwardMultiplier;
+		workingDaySpeed = daySpeed * fastForwardMultiplier;
+		workingNightSpeed = nightSpeed * fastForwardMultiplier;
+	}
+
+	public void HandleFastForward()
+	{
+		//Stops the fast forward once a new day has begun
+		if (onFastForward) {
+			//If there's a transition between night and day ie. a new day has begun
+			//then return to normal speed
+			if (SunriseHasOccured())
+			{
+				ReturnToNormalSpeed();
+				onFastForward = false;
+			}
+		}
 	}
 
 	public void ReturnToNormalSpeed()
 	{
-		onFastForward = false;
-		daySpeed /= fastForwardMultiplier;
-		nightSpeed /= fastForwardMultiplier;
+		daySpeed = workingDaySpeed;
+		nightSpeed = workingDaySpeed;
 	}
 
 }
