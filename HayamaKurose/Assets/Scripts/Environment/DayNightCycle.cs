@@ -9,7 +9,7 @@ public class DayNightCycle : MonoBehaviour {
 	//Place this on the directional sun ligth in the scene
 	//And maybe attach a opposite directional moonlight
 
-	public GameController GC;
+	private GameController GC;
 
 	public float daySpeed = 0.03f;			//In degrees per frame; Good values =  0.2-0.3
 	public float nightSpeed = 0.06f;		//Nights are shorter than the days; Good values = daySpeed *2
@@ -22,43 +22,44 @@ public class DayNightCycle : MonoBehaviour {
 
 	void Start()
 	{
+		GC = GameObject.FindObjectOfType<GameController>();
+
 		//Saves the current speeds for reversion later
 		workingDaySpeed = daySpeed;
 		workingNightSpeed = nightSpeed;
 
 		//Set sun to an early morning position
 		transform.SetPositionAndRotation(new Vector3(0,0,0), new Quaternion(5f, 50f, 0, 0));
+
+		CheckIfSunIsOut(out isDayTime);
+		wasDayTime = isDayTime;
 	}
 	void FixedUpdate () 
 	{
+		wasDayTime = isDayTime;
 		CheckIfSunIsOut(out isDayTime);
 
-		//Control day and night
+		//"Orbit" Sun and Moon
 		if (isDayTime) {
-                //Day time is slower than night time
-                transform.Rotate(workingDaySpeed, 0, 0);
+            //Day time is slower than night time
+            transform.Rotate(workingDaySpeed, 0, 0);
 			// Debug.Log("Daytime!");
 		}
 		else {
-                transform.Rotate(workingNightSpeed, 0, 0);
+            transform.Rotate(workingNightSpeed, 0, 0);
 			// Debug.Log("Nighttime!");
 		}
 
 		if (SunriseHasOccured())
 		{
 			GC.dayCount++;
+			GC.StartNewDay();
+			if (onFastForward)
+			{
+				ReturnToNormalSpeed();
+				onFastForward = false;
+			}
 		}
-		//If there's a transition between day and night ie. nightfall
-		//Then let game controller know so it can start a new wave (day) of enemies
-
-
-		// if (wasDayTime && !this.isDayTime())	//If previous frame was daytime and current frame is night time...
-		// {
-        //         GC.StartNewDay();
-		// }
-
-		HandleFastForward();
-        wasDayTime = isDayTime;	//Required for the day to night transition methods
 	}
 
 
@@ -118,8 +119,8 @@ public class DayNightCycle : MonoBehaviour {
 
 	public void ReturnToNormalSpeed()
 	{
-		daySpeed = workingDaySpeed;
-		nightSpeed = workingDaySpeed;
+		workingDaySpeed = daySpeed;
+		workingNightSpeed = nightSpeed;
 	}
 
 }

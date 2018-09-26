@@ -57,7 +57,7 @@ MonoBehaviour:
   gameTime: 0
   dayCount: 0
   killCount: 0
-  spawnsPerDay: 20
-  additionalSpawnsPerDay: 10
+  spawnsPerDay: 5
+  additionalSpawnsPerDay: 1
   remainingSpawnsToday: 20
   sun: {fileID: 0}

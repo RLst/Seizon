@@ -30,6 +30,7 @@ namespace Seizon
 	void Update() 
 	{
 		///If there are enemies left to spawn
+		Debug.Log("gc.remSpawnsToday = "+GC.remainingSpawnsToday);
 		if (GC.remainingSpawnsToday > 0) 
 		// if (gameController.RemainingSpawnsToday > 0)
 		{
@@ -38,10 +39,6 @@ namespace Seizon
 				Spawn();
 				GetNextSpawnTime();
 			}
-		}
-		else ///No more enemies left so end the day (speed up the day)
-		{
-			// GameController.EndDay();
 		}
 	}
 

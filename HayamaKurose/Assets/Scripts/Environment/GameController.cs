@@ -13,18 +13,22 @@ namespace Seizon
         public GameObject pauseMenu;
         public GameObject topPauseMenu;
         public GameObject settingsMenu;
+        public GameObject daysSurvivedPanel;
 
 
         ////HUD Parameters
+        [HideInInspector]
         public double gameTime = 0;
+        [HideInInspector]
         public int dayCount = 0;
+        [HideInInspector]
         public int killCount = 0;
 
         ////Spawn Parameters
-        public int spawnsPerDay = 20;               //Initial settings
-        public int additionalSpawnsPerDay = 10;     //Initial settings
+        public int spawnsPerDay = 10;               //Initial settings
+        public int additionalSpawnsPerDay = 15;     //Initial settings
         [HideInInspector]
-        public int remainingSpawnsToday = 20;       //Working
+        public int remainingSpawnsToday;       //Working
         public DayNightCycle sun;
 
         //Singleton pattern
@@ -48,6 +52,8 @@ namespace Seizon
             // {
             //     //Throw assert
             // }
+
+            remainingSpawnsToday = spawnsPerDay;
         }
 
         // Update is called once per frame
@@ -79,16 +85,13 @@ namespace Seizon
             gameTime += Time.deltaTime;    
 
             
-            ///Check if all enemies have been killed
-            if (remainingSpawnsToday <= 0) {
-                StartNewDay();
-            }
+            ///Check if all enemies of this day (wave) have been killed
+            if (remainingSpawnsToday == 0 && GameObject.FindGameObjectsWithTag("Enemy").Length == 0) {
+                //If so then fast forward the day
+                sun.FastForward();
+                //The sun will automatically trigger StartNewDay() at the next morning
 
-            // ///If it is not day 0 and all enemies are killed then fast forward to the next day
-            // if (dayCount != 0 && GameObject.FindGameObjectsWithTag("Enemy").Length <= 0) {
-            //     sun.FastForward();
-            // }
-                
+            }
         }
 
 
@@ -99,18 +102,13 @@ namespace Seizon
             ShowNextDayGUIPanel();
 
             //Add on new number of spawns for the next day
-            remainingSpawnsToday += spawnsPerDay + additionalSpawnsPerDay * dayCount;
+            remainingSpawnsToday += spawnsPerDay + (additionalSpawnsPerDay * dayCount);
             Debug.Log("EndDay(); remainingSpawnsToday = " + remainingSpawnsToday);
-
-            //If all spawn subjects are dead then speed the day up until morning
-            if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 0) {
-                sun.FastForward();
-            }
         }
 
         public void ShowNextDayGUIPanel()
         {
-            Debug.Log("You've survived Day " + dayCount);
+            Debug.Log("You've survived day " + dayCount);
             //Implement GUI Panel
         }
 
