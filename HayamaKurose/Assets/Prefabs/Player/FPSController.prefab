@@ -534,12 +534,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeapon: {fileID: 114159708207639322}
-  health: 96
+  health: 100
   weaponsCarried: []
   impactEffect: {fileID: 1049053225775234, guid: dd10db3cc17df41bc9fd9fcecf348a99,
     type: 2}
-  debugTarget: {fileID: 1735013640377428, guid: 22319a1ebb9f74ad8a7f1b68c761d6c7,
-    type: 2}
+  debugTarget: {fileID: 0}
 --- !u!198 &198353973915505928
 ParticleSystem:
   m_ObjectHideFlags: 1

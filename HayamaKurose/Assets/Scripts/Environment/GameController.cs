@@ -7,24 +7,29 @@ namespace Seizon
 {
     public class GameController : MonoBehaviour
     {
-        ///Add this script to a empty object
+		////////////////
+		// Add this script to a empty object
+		//////////////
 
-        ////Menus
+		/// Core
+		private Player player;
+
+        ///Menus
         public GameObject pauseMenu;
         public GameObject topPauseMenu;
         public GameObject settingsMenu;
         public GameObject daysSurvivedPanel;
+		public GameObject gameOverPanel;
 
-
-        ////HUD Parameters
+        ///HUD Parameters
         [HideInInspector]
         public double gameTime = 0;
         [HideInInspector]
-        public int dayCount = 0;
+        public int dayCount = -1;
         [HideInInspector]
         public int killCount = 0;
 
-        ////Spawn Parameters
+        ///Spawn Parameters
         public int spawnsPerDay = 10;               //Initial settings
         public int additionalSpawnsPerDay = 15;     //Initial settings
         [HideInInspector]
@@ -47,15 +52,19 @@ namespace Seizon
                 instance = this;
             }
 
-            // GameController controller = GameObject.FindObjectOfType<GameController>();
-            // if(controller.gameObject != gameObject)
-            // {
-            //     //Throw assert
-            // }
+			// GameController controller = GameObject.FindObjectOfType<GameController>();
+			// if(controller.gameObject != gameObject)
+			// {
+			//     //Throw assert
+			// }
 
+			//Assign player (should only be one player)
+			player = FindObjectOfType<Player>();
+
+			//Init the working spawn number
             remainingSpawnsToday = spawnsPerDay;
         }
-
+		
         // Update is called once per frame
         void Update()
         {
@@ -92,10 +101,17 @@ namespace Seizon
                 //The sun will automatically trigger StartNewDay() at the next morning
 
             }
+
+			///Check the player has died
+			if (PlayerHasDied(player))
+			{
+				gameOverPanel.SetActive(true);
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+			}
         }
 
-
-        public void StartNewDay()
+		public void StartNewDay()
         {
             //Next day!!! Let the user know (GUI panel)
             // dayCount++;
@@ -112,6 +128,15 @@ namespace Seizon
             //Implement GUI Panel
         }
 
+		bool PlayerHasDied(Player player)
+		{
+			return player.health <= 0;
+		}
+
+		//void GameOverIfPlayerHasDied()
+		//{
+
+		//}
     }
 }
 

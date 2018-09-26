@@ -233,7 +233,7 @@ InputManager:
     m_Name: Reload
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
+    negativeButton: r
     positiveButton: r
     altNegativeButton: 
     altPositiveButton: joystick button 5
