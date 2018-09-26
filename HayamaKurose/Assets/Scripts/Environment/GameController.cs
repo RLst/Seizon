@@ -24,8 +24,8 @@ namespace Seizon
         ///HUD Parameters
         [HideInInspector]
         public double gameTime = 0;
-        [HideInInspector]
-        public int dayCount = -1;
+        //[HideInInspector]
+        public int dayCount;
         [HideInInspector]
         public int killCount = 0;
 
@@ -42,6 +42,8 @@ namespace Seizon
 
         void Start()
         {
+			dayCount = -1;
+
             //Setup singleton gamecontroller
             if(instance != null)
             {
@@ -132,11 +134,7 @@ namespace Seizon
 		{
 			return player.health <= 0;
 		}
-
-		//void GameOverIfPlayerHasDied()
-		//{
-
-		//}
+	
     }
 }
 

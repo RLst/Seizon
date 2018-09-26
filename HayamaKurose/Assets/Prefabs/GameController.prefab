@@ -54,10 +54,12 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   topPauseMenu: {fileID: 0}
   settingsMenu: {fileID: 0}
+  daysSurvivedPanel: {fileID: 0}
+  gameOverPanel: {fileID: 0}
   gameTime: 0
-  dayCount: 0
+  dayCount: -1
   killCount: 0
-  spawnsPerDay: 5
-  additionalSpawnsPerDay: 1
-  remainingSpawnsToday: 20
+  spawnsPerDay: 10
+  additionalSpawnsPerDay: 15
+  remainingSpawnsToday: 0
   sun: {fileID: 0}

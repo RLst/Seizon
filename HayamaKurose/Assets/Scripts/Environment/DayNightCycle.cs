@@ -12,8 +12,9 @@ public class DayNightCycle : MonoBehaviour {
 	private GameController GC;
 
 	public float daySpeed = 0.03f;			//In degrees per frame; Good values =  0.2-0.3
-	public float nightSpeed = 0.06f;		//Nights are shorter than the days; Good values = daySpeed *2
-	private bool isDayTime;
+	public float nightSpeed = 0.06f;        //Nights are shorter than the days; Good values = daySpeed *2
+
+	private bool isDayTime;			//Game starts in the morning by default
 	private bool wasDayTime;				//Required to check for new day transition
 	private bool onFastForward = false;
 	
@@ -29,10 +30,10 @@ public class DayNightCycle : MonoBehaviour {
 		workingNightSpeed = nightSpeed;
 
 		//Set sun to an early morning position
-		transform.SetPositionAndRotation(new Vector3(0,0,0), new Quaternion(5f, 50f, 0, 0));
+		//transform.SetPositionAndRotation(new Vector3(0,0,0), new Quaternion(0f, 180f, 40, 0));
 
-		CheckIfSunIsOut(out isDayTime);
-		wasDayTime = isDayTime;
+		//CheckIfSunIsOut(out isDayTime);
+		//wasDayTime = isDayTime;
 	}
 	void FixedUpdate () 
 	{
