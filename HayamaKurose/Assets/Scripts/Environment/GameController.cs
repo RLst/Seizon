@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Seizon
 {
@@ -20,6 +21,8 @@ namespace Seizon
         public GameObject settingsMenu;
         public GameObject daysSurvivedPanel;
 		public GameObject gameOverPanel;
+        public Text daysSurvivedText;
+        public GameObject m_FPSController;
 
         ///HUD Parameters
         [HideInInspector]
@@ -110,7 +113,17 @@ namespace Seizon
 				gameOverPanel.SetActive(true);
 				Cursor.lockState = CursorLockMode.None;
 				Cursor.visible = true;
-			}
+                m_FPSController.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
+                m_FPSController.GetComponent<Player>().enabled = false;
+
+            //Fades out days survived text
+            if (daysSurvivedText.color.a > 0)
+            {
+                var tempColor = daysSurvivedText.color;
+                tempColor.a -= 8 * Time.deltaTime;
+                daysSurvivedText.color = tempColor;
+            }
+        }
         }
 
 		public void StartNewDay()
@@ -128,6 +141,12 @@ namespace Seizon
         {
             Debug.Log("You've survived day " + dayCount);
             //Implement GUI Panel
+            daysSurvivedText.text = "You have survived day " + dayCount + "!";
+            var tempColor = daysSurvivedText.color;
+            tempColor.a = 20f;
+            if (dayCount == 0)
+                tempColor.a = 0f;
+            daysSurvivedText.color = tempColor;
         }
 
 		bool PlayerHasDied(Player player)
