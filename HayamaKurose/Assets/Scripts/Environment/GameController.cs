@@ -116,6 +116,13 @@ namespace Seizon
                 m_FPSController.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
                 m_FPSController.GetComponent<Player>().enabled = false;
 
+                StartCoroutine("FallingBack");
+
+                //if (m_FPSController.GetComponentInChildren<Camera>().transform.rotation.x != -50)
+                //        m_FPSController.GetComponentInChildren<Camera>().transform.Rotate(new Vector3(-50, 0, 0));
+                //m_FPSController.GetComponent<Camera>().transform.rotation.
+       
+            }
             //Fades out days survived text
             if (daysSurvivedText.color.a > 0)
             {
@@ -124,6 +131,16 @@ namespace Seizon
                 daysSurvivedText.color = tempColor;
             }
         }
+
+        IEnumerator FallingBack()
+        {
+            for (float f = 0f; f < 60f; f -= 0.1f)
+            {
+                var FPScam = m_FPSController.GetComponent<Camera>();
+                FPScam.transform.rotation = new Quaternion(f, 0, 0, 0);
+
+                yield return new WaitForSeconds(2f);
+            }
         }
 
 		public void StartNewDay()
