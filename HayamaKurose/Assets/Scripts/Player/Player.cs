@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 namespace Seizon {
 public class Player : MonoBehaviour
@@ -64,7 +65,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         ////Attack with current weapon
-        if (Input.GetButton("Fire"))   //Generally Left Mouse Click or Left Control
+        if (CrossPlatformInputManager.GetButton("Fire"))   //Generally Left Mouse Click or Left Control
         {
             //Handle various fire modes
             switch (currentWeapon.fireMode)
