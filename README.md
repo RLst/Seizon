@@ -1,10 +1,8 @@
-# T2xN
-AIE Cross Platform Development Project 
-Team members:
+# Seizon - Survival!
+An anime T-posing surival horror shooter
+Cross Platform Development Project 
+
+Team T2xN:
 Nathan Meyer
 Tony Le
 Nathan Paonessa
-
-Project:
-Seizon
-An anime T-posing surival horror shooter
